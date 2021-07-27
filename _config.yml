@@ -5,3 +5,11 @@ plugins:
 relative_links:
   enabled: true
   collections: true
+include:
+  - README.md
+  - LICENSE.md
+  - COPYING.md
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - ISSUE_TEMPLATE.md
+  - PULL_REQUEST_TEMPLATE.md
