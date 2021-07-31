@@ -1,11 +1,35 @@
+#
+# Global site config
+# https://jekyllrb.com/docs/configuration/
+#
+
+# [site encoding]
+encoding: utf-8
+
+# [Name of visual theme]
+#theme: jekyll-theme-minimal
 remote_theme: pages-themes/architect@v0.2.0
+
+# [Used rubygem plugins]
 plugins:
   - jekyll-remote-theme
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-github-metadata
+  - jekyll-optional-front-matter
+  - jekyll-paginate
+  - jekyll-readme-index
+  - jekyll-redirect-from
   - jekyll-relative-links
-relative_links:
-  enabled: true
-  collections: true
+whitelist:
+  - jekyll-redirect-from
+
+# [Include / Exclude deploy resources]
 include:
+  - .htaccess
   - README.md
   - LICENSE.md
   - COPYING.md
@@ -13,3 +37,70 @@ include:
   - CODE_OF_CONDUCT.md
   - ISSUE_TEMPLATE.md
   - PULL_REQUEST_TEMPLATE.md
+exclude:
+  - "LICENSE"
+  - "**.xcf"
+
+
+#
+# Plugins config
+#
+
+emoji:
+  enabled: true
+# If you'd like to serve emoji images locally, or use a custom emoji source,
+# set following path:
+#  src: "/assets/images/emoji"
+
+gist:
+  enabled: true
+  # Disabling noscript support. Default: true
+  # By default, Jekyll Gist will make an HTTP call per Gist to retrieve the raw content of the Gist. This information is used to propagate noscript tags for search engines and browsers without JavaScript support.
+  # If you'd like to disable this feature, for example, to speed up builds locally, set the following flag to false.
+  noscript: true
+
+optional_front_matter:
+  enabled: true
+  # By default the original markdown files will be included as static pages in the output.
+  # To remove them from the output, set following flag to true.
+  remove_originals: true
+
+readme_index:
+  enabled: true
+  # By default the original README markdown files will be included as static pages in the output.
+  # To remove them from the output, set following flag to true.
+  remove_originals: true
+  # To process frontmatter metadata when present, set following flag to true. 
+  with_frontmatter: false
+
+relative_links:
+  enabled: true
+  # To exclude specific directories and/or files.
+#  exclude:
+#    - directory
+#    - file.md
+  # To enable relative links from collection items (including posts).
+  collections: true
+
+
+#
+# Theme layout config
+#
+
+# [The title of your site]
+#title: 
+
+# [A short description of your site's purpose]
+#description: 
+
+# [author of posts]
+#author: 
+
+# [Number of posts in one paginated section (default: 3)]
+paginate: 10
+
+# ["true" or "false" to indicate whether to provide a download URL]
+show_downloads: false
+
+# [Your Google Analytics tracking ID]
+#google_analytics:
