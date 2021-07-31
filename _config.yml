@@ -2,32 +2,72 @@
 # Global site config
 # https://jekyllrb.com/docs/configuration/
 #
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+# 
+# Use ">" after property name to start a multiline value
+# ignoring newlines until next property.
+# myvariable: > # this means to ignore newlines until "myvariable2:"
+#
 
-# [site encoding]
+
+# [ Site encoding ]
 encoding: utf-8
 
-# [Name of visual theme]
+# [ The base URL (hostname & protocol) for your site, e.g., https://example.com ]
+# [ If none is provided, the plugin will try to use value of "site.github.url" key ]
+#url: "https://example.com"
+
+# [ The base URL (subpath) for your site. Default '/' ]
+# [ If none is provided, the plugin will try to use value of "site.github.baseurl" key ]
+#baseurl: "/blog"
+
+# [ The name of the site, e.g., "My awesome site" ]
+#title: 
+# [ Use "title" and not "name" to match document and page metadata. ]
+#name: 
+
+# [ A short description (e.g., "A blog dedicated to reviewing cat gifs)", used as part of the SEO title tag like "My Awesome Site | A blog dedicated to reviewing cat gifs" instead of "My Awesome Site | Long description about a blog dedicated to reviewing cat gifs" that would be used when "page.title" is not defined ]
+#tagline: 
+
+# [ A longer description of what your site is about, e.g., "Where I blog about Jekyll and other awesome things" ]
+#description: 
+
+# [ Global author information of contents. See also "_data/authors" file or "github.owner_*" ]
+#author: davorpa
+
+# [ "true" or "false" to indicate whether to provide a download URL. See also "github.show_downloads" ]
+show_downloads: false
+
+# [ Your Google Analytics tracking ID ]
+#google_analytics: 
+
+
+# [ Name of visual theme ]
 #theme: jekyll-theme-minimal
 remote_theme: pages-themes/architect@v0.2.0
 
-# [Used rubygem plugins]
+# [ Rubygem used plugins ]
 plugins:
   - jekyll-remote-theme
   - jemoji
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-gist
   - jekyll-feed
+  - jekyll-gist
   - jekyll-github-metadata
   - jekyll-optional-front-matter
   - jekyll-paginate
+#  - jekyll-paginate-v2
   - jekyll-readme-index
   - jekyll-redirect-from
   - jekyll-relative-links
+  - jekyll-seo-tag
+  - jekyll-sitemap
 whitelist:
   - jekyll-redirect-from
 
-# [Include / Exclude deploy resources]
+# [ Include / Exclude resources from build ]
 include:
   - .htaccess
   - README.md
@@ -37,7 +77,10 @@ include:
   - CODE_OF_CONDUCT.md
   - ISSUE_TEMPLATE.md
   - PULL_REQUEST_TEMPLATE.md
+
 exclude:
+  - Gemfile
+  - Gemfile.lock
   - "LICENSE"
   - "**.xcf"
 
@@ -46,11 +89,70 @@ exclude:
 # Plugins config
 #
 
+
+# [ https://github.com/jekyll/jekyll-feed ]
+
+feed:
+  enabled: true
+  # Override with an existing feed someplace other than /feed.xml.
+  # Use it only when a third-party tool is in charge of generate it.
+#  path: "/atom.xml"
+  # By default the plugin limits the number of posts in the feed to 10.
+  # Simply define a new limit.
+  posts_limit: 25
+  # Allows to exclude post content (disable <content> tag) from the Atom feed.
+  # Default value is false for backward compatibility.
+#  excerpt_only: true
+  # To generate feeds for each category.
+  # Simply define which categories you'd like feeds for.
+#  categories:
+#    - news
+#    - updates
+  # To generate feeds for collections other than the Posts collection.
+  # This works best for chronological collections (e.g., collections with dates in the filenames).
+  # Simply define which collections you'd like feeds for in your config:
+#  collections:
+#    - changes
+  # By default, collection feeds will be outputted to /feed/<COLLECTION>.xml
+  # If you'd like to customize the output path, specify a collection's custom path as follow
+#  collections:
+#    changes:
+#      path: "/changes.xml"
+  # Collections can also have category feeds which are outputted as /feed/<COLLECTION>/<CATEGORY>.xml
+  # Specify categories like so
+#  collections:
+#    changes:
+#      path: "/changes.xml"
+#      categories:
+#        - news
+#        - updates
+  # To automatically generate feeds for each tag you apply to your posts you can add
+#  tags: true
+  # If there are tags you don't want included in this auto generation you can exclude them
+#  tags:
+#    except:
+#      - tag-to-exclude
+#      - another-tag
+  # If you wish to change the location of these auto generated feeds (/feed/by_tag/<TAG>.xml by default) you can provide an alternative folder for them to live in
+#  tags:
+#    path: "alternative/path/for/tags/feeds/"
+  # If you only want to generate feeds for a few tags (excluded takes precedence) you can also set this
+#  tags:
+#    only:
+#      - tag-to-include
+#      - another-tag
+
+
+# [ https://github.com/jekyll/jemoji ]
+
 emoji:
   enabled: true
 # If you'd like to serve emoji images locally, or use a custom emoji source,
 # set following path:
 #  src: "/assets/images/emoji"
+
+
+# [ https://github.com/jekyll/jekyll-gist ]
 
 gist:
   enabled: true
@@ -59,11 +161,105 @@ gist:
   # If you'd like to disable this feature, for example, to speed up builds locally, set the following flag to false.
   noscript: true
 
+
+# [ https://github.com/jekyll/github-metadata ]
+
+github:
+  enabled: true
+  # Overrides global "site.url" as the GitHub Pages domain (CNAME or user domain), if none is set
+#  url: "http://username.github.io/metadata-example"
+  # Overrides global "site.baseurl" as the project name for project pages, if none is set
+#  baseurl: "/metadata-example"
+  # Overrides global "site.title" with the repository name, if none is set
+#  project_title: "metadata-example"
+  # Overrides global "site.description" with the repository tagline, if none is set
+#  project_tagline: "A GitHub Pages site to showcase repository metadata"
+  # Overrides global "site.author" with the repository owner name, if none is set
+#  owner_name: "davorpa"
+#  owner_url: "https://github.com/davorpa"
+#  owner_gravatar_url: "https://github.com/davorpa.png"
+  # As flag to check if repo is for an user page
+#  is_user_page: false
+  # As flag to check if repo is for an user project
+#  is_project_page: true
+  # As flag to check if repo is configured for downloads
+#  show_downloads: true
+  # As flag to check if repo is configured as private 
+#  private: false
+  # As flag to check if repo is frozen (only-read)
+#  archived: false
+
+
+# [ https://github.com/benbalter/jekyll-optional-front-matter ]
+
 optional_front_matter:
   enabled: true
   # By default the original markdown files will be included as static pages in the output.
   # To remove them from the output, set following flag to true.
   remove_originals: true
+
+
+# [ https://jekyllrb.com/docs/pagination ]
+# [ https://github.com/sverrirs/jekyll-paginate-v2 ]
+
+# Explicitly turn off the old code
+#paginate: nil
+#paginate_path: nil
+
+# Old jekyll-paginate pagination logic
+#   Uncomment thew two entries below to demonstrate how the jekyll-paginate-v2 gem
+#   retains backwards compatibility with the old pagination logic 
+#   AS OF JANUARY 2018 this code does not work anymore!
+#
+# [ Number of items in one paginated section (default: 3) ]
+paginate: 10
+# [ The link pattern of the pagination pages (default/old style: "/blog/page:num/") ]
+#paginate_path: "/legacy/page:num/"
+
+# Pagination Settings (jekyll-paginate-v2)
+# https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md#site-configuration
+pagination:
+  # Set to 'true' to enable pagination debugging. This can be enabled in the site config or only for individual pagination pages
+  debug: false
+  # The default document collection to paginate if nothing is specified ('posts' is default)
+  collection: "posts"
+  # How many objects per paginated page, used to be `paginate` (default: 0, means all)
+  per_page: 5
+  # The permalink structure for the paginated pages (this can be any level deep)
+  permalink: "/page-:num/" # Pages are index.html inside this folder
+  #permalink: "/page/:num/" # Pages are index.html inside this folder (default)
+  #permalink: "/page/:num.html" # Pages are simple html files 
+  #permalink: "/page/:num" # Pages are html files, linked jekyll extensionless permalink style.
+  # Optional the title format for the paginated pages (default: ':title - page :num')
+  # (supports :title for original page title, :num for pagination page number, :max for total number of pages)
+  title: ":title - page :num of :max"
+  # Limit how many pagenated pages to create (default: 0, means all)
+  limit: 0
+  # Optional, defines the field that the posts should be sorted on (omit to default to 'date')
+  sort_field: "date"
+  # Optional, sorts the posts in reverse order (omit to default decending or sort_reverse: true)
+  sort_reverse: true
+  # Optional, the default category to use, omit or just leave this as 'posts' to get a backwards-compatible behavior (all posts)
+  category: "posts"
+  # Optional, the default tag to use, omit to disable
+#  tag: ""
+  # Optional, the default locale to use, omit to disable (depends on a field 'locale' to be specified in the posts, 
+  # in reality this can be any value, suggested are the Microsoft locale-codes (e.g. en_US, en_GB) or simply the ISO-639 language code )
+#  locale: ""
+  # Optional, omit or set both before and after to zero to disable. 
+  # Controls how the pagination trail for the paginated pages look like. 
+  trail: 
+    before: 4
+    after: 4
+  # Optional, the default file extension for generated pages (e.g html, json, xml).
+  # Internally this is set to html by default
+  extension: html
+  # Optional, the default name of the index file for generated pages (e.g. 'index.html')
+  # Without file extension
+  indexpage: "index"
+
+
+# [ https://github.com/benbalter/jekyll-readme-index ]
 
 readme_index:
   enabled: true
@@ -71,7 +267,19 @@ readme_index:
   # To remove them from the output, set following flag to true.
   remove_originals: true
   # To process frontmatter metadata when present, set following flag to true. 
-  with_frontmatter: false
+#  with_frontmatter: false
+
+
+# [ https://github.com/jekyll/jekyll-redirect-from ]
+
+redirect_from:
+  enabled: true
+  # By default, a file called redirects.json, which can be used for automated testing or to implement server-side redirects, will be included in the output.
+  # To exclude it from the output, set following key to false.
+#  json: false
+
+
+# [ https://github.com/benbalter/jekyll-relative-links ]
 
 relative_links:
   enabled: true
@@ -84,23 +292,13 @@ relative_links:
 
 
 #
-# Theme layout config
+# Pages global config
 #
 
-# [The title of your site]
-#title: 
-
-# [A short description of your site's purpose]
-#description: 
-
-# [author of posts]
-#author: 
-
-# [Number of posts in one paginated section (default: 3)]
-paginate: 10
-
-# ["true" or "false" to indicate whether to provide a download URL]
-show_downloads: false
-
-# [Your Google Analytics tracking ID]
-#google_analytics:
+defaults:
+  -
+    scope:
+      path:            "assets/**/*.pdf"
+    values:
+      # Exclude above glob pattern from sitemap.xml
+      sitemap:         false
