@@ -1,7 +1,7 @@
 {% if site.google_analytics %}
 <script>
 /**
- * Creates a temporary global ga object and loads analy  tics.js.
+ * Creates a temporary global ga object and loads analytics.js.
  * Paramenters o, a, and m are all used internally.  They could have been declared using 'var',
  * instead they are declared as parameters to save 4 bytes ('var ').
  *
@@ -31,8 +31,14 @@
   m.parentNode.insertBefore(a, m);
 })(window, document, "script", "//www.google-analytics.com/analytics{% if site.debug %}_debug{% endif %}.js", "ga");
 
+{% if site.debug and site.google_analytics_trace %}
+// Enable trace debugging to output more verbose information to the console.
+window.ga_debug = {trace: true};
+{% endif %}
 // Create default tracker with provided `Measure Property ID` and `cookie domain`.
 ga("create", "{{ site.google_analytics || escape }}", "auto");
+// Disable hits sending on certain cases (e.g. development or testing environments)
+(location.hostname === "localhost") && ga("set", "sendHitTask", null);
 // Send `pageview` hit to default tracker.
 ga("send", "pageview");
 </script>
