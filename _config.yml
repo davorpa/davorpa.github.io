@@ -42,7 +42,7 @@ encoding: utf-8
 show_downloads: false
 
 # [ Your Google Analytics tracking ID ]
-#google_analytics: 
+google_analytics: "UA-203788397-1"
 
 
 # [ Name of visual theme ]
