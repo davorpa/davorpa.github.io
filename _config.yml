@@ -44,6 +44,10 @@ show_downloads: false
 # [ Your Google Analytics tracking ID ]
 google_analytics: "UA-203788397-1"
 
+# [ Your Google Site Verification ID ]
+google_site_verification: "_Y4ZLRi1l9knfJs7z-b2Q310p4gaBDqr8QIHP0b2h88"
+
+
 
 # [ Name of visual theme ]
 #theme: jekyll-theme-minimal
