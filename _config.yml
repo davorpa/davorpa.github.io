@@ -67,7 +67,7 @@ plugins:
 whitelist:
   - jekyll-redirect-from
 
-# [ Include / Exclude resources from build ]
+# [ Include / Exclude resources from production build ]
 include:
   - .htaccess
   - README.md
@@ -79,9 +79,14 @@ include:
   - PULL_REQUEST_TEMPLATE.md
 
 exclude:
+  - CHANGELOG.md
+  - CNAME
   - Gemfile
   - Gemfile.lock
-  - "LICENSE"
+  - LICENSE
+  - README.md
+  - screenshot.png
+  - docs/
   - "**.xcf"
 
 
