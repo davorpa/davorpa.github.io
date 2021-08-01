@@ -37,6 +37,8 @@ window.ga_debug = {trace: true};
 {% endif %}
 // Create default tracker with provided `Measure Property ID` and `cookie domain`.
 ga("create", "{{ site.google_analytics || escape }}", "auto");
+// Updates default tracker to use `navigator.sendBeacon` as transport method, if available.
+ga("set", "transport", "beacon");
 // Disable hits sending on certain cases (e.g. development or testing environments)
 (location.hostname === "localhost") && ga("set", "sendHitTask", null);
 // Send `pageview` hit to default tracker.
